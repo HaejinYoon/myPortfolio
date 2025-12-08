@@ -1,20 +1,56 @@
-<<<<<<< HEAD
-# React + Vite
+# 🌐 Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+나만의 포트폴리오 웹사이트입니다.  
+프론트엔드 개발자로서의 역량, 프로젝트, 기술 스택을 한눈에 볼 수 있도록 구성했습니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ 주요 기능 (Features)
 
-## React Compiler
+- **스크롤 기반 내비게이션 (Scroll Spy)**
+  - 화면 오른쪽에 위치한 점 형태의 내비게이션이 현재 섹션을 자동 감지하여 활성화됩니다.
+  
+- **부드러운 UI 전환 및 인터랙션**
+  - React 기반의 애니메이션과 인터랙션 적용
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **반응형 디자인**
+  - 모바일 · 태블릿 · 데스크탑 모두 보기 좋게 최적화
 
-## Expanding the ESLint configuration
+- **섹션 구성**
+  - Hero
+  - About
+  - Skills
+  - Projects
+  - Contact
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# myPortfolio
->>>>>>> e029e01969767083835aeb95c9685d2117a369f9
+---
+
+## 🛠 기술 스택 (Tech Stack)
+
+### Frontend
+- **React**
+- **JavaScript (ES6+)**
+- **CSS / styled-components (or Tailwind, 프로젝트에 맞게 수정)**
+- IntersectionObserver 기반 사용자 정의 훅 `useScrollSpy`
+
+### Development Tools
+- **Vite / CRA** (프로젝트 구조에 따라 선택)
+- **ESLint / Prettier**
+
+---
+
+## 📁 폴더 구조 (예시)
+
+```bash
+src/
+ ├─ components/
+ │   ├─ Hero/
+ │   ├─ About/
+ │   ├─ Skills/
+ │   ├─ Projects/
+ │   ├─ Contact/
+ │   └─ RightSideNav/
+ ├─ hooks/
+ │   └─ useScrollSpy.js
+ ├─ App.jsx
+ └─ main.jsx
