@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Scrollbar Global Style (Theme Matching) ===== */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(220, 200, 200); /* border color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(177, 35, 35); /* primary */
+  border-radius: 10px;
+  border: 2px solid rgb(220, 200, 200);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(177, 60, 60); /* primary-light */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(177, 35, 35) rgb(220, 200, 200);
+}
