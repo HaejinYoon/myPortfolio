@@ -45,3 +45,8 @@ html {
   scrollbar-width: auto;
   scrollbar-color: rgb(177, 35, 35) rgb(220, 200, 200);
 }
+
+/*  about */
+.skill-badge {
+  @apply px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium;
+}
