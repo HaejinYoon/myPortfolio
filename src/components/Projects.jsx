@@ -4,7 +4,7 @@ export default function Projects() {
   return (
     <div
       className="
-        h-screen px-6 py-24 text-center
+        px-6 text-center
         bg-bg dark:bg-[#141212]
         text-main dark:text-[#f2f2f2]
         transition-colors duration-300
@@ -18,12 +18,10 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
 
-        {/* Project 1 */}
-        <Reveal>
+        <Reveal delay={100}>
           <div
             className="
-              p-6
-              bg-card dark:bg-[#1f1b1a]
+              p-6 bg-card dark:bg-[#1f1b1a]
               border border-border dark:border-[#3a3332]
               rounded shadow hover:shadow-lg
               transition-colors duration-300
@@ -38,12 +36,10 @@ export default function Projects() {
           </div>
         </Reveal>
 
-        {/* Project 2 */}
-        <Reveal>
+        <Reveal delay={200}>
           <div
             className="
-              p-6
-              bg-card dark:bg-[#1f1b1a]
+              p-6 bg-card dark:bg-[#1f1b1a]
               border border-border dark:border-[#3a3332]
               rounded shadow hover:shadow-lg
               transition-colors duration-300

@@ -5,8 +5,8 @@ export default function Hero() {
     <section
       id="home"
       className="
-        h-screen flex flex-col justify-center items-center text-center
-        px-6
+        flex flex-col justify-center items-center text-center
+        px-6 py-40
         bg-bg dark:bg-[#141212]
         text-main dark:text-[#f2f2f2]
         transition-colors duration-300
