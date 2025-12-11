@@ -22,7 +22,7 @@ export default function App() {
       .replace(/[-_]/g, " ")
       .replace(/\b\w/g, (c) => c.toUpperCase());
 
-    document.title = `${formatted} | Portfolio`;
+    document.title = `${formatted} | Haejin's Portfolio`;
   }, [activeSection]);
 
   // 🔥 스크롤 속도 조절
