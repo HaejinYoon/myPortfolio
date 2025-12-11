@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        gowun: ["GowunDodum", "sans-serif"],
+      },
       colors: {
         primary: "rgb(177, 35, 35)",
         "primary-light": "rgb(177, 60, 60)",

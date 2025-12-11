@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "GowunDodum";
+  src: url("/src/assets/fonts/GowunDodum-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+  body {
+    @apply font-gowun;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
