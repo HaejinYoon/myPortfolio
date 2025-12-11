@@ -18,9 +18,9 @@ export default function Contact() {
 
       <Reveal delay={120}>
         <p className="text-sub dark:text-[#bbbbbb] max-w-xl leading-relaxed">
-          이메일: your@email.com
+          이메일: hjyoomp@gmail.com
           <br />
-          깃허브: github.com/yourprofile
+          깃허브: github.com/HaejinYoon
         </p>
       </Reveal>
     </div>
