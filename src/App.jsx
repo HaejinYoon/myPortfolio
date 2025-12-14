@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
+import Career from "./components/Career";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import RightSideNav from "./components/RightSideNav";
@@ -12,7 +13,7 @@ import { pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 export default function App() {
-  const sectionIds = ["home", "about", "skills", "projects", "contact"];
+  const sectionIds = ["home", "about", "career", "projects", "skills", "contact"];
   const activeSection = useScrollSpy(sectionIds, 120);
 
   // 🔥 절대 수정하지 말아야 하는 제목 자동 변경
@@ -100,6 +101,11 @@ export default function App() {
         <Skills />
       </section>
 
+      {/* Career Section */}
+      <section id="Career" className="h-screen items-center pt-40 pb-52">
+        <Career />
+      </section>
+      
       {/* Projects Section */}
       <section id="projects" className="h-screen items-center pt-40 pb-52">
         <Projects />
