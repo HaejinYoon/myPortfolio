@@ -8,9 +8,7 @@ import Contact from "./components/Contact";
 import RightSideNav from "./components/RightSideNav";
 import DarkModeSwitch from "./components/DarkModeSwitch";
 import useScrollSpy from "./hooks/useScrollSpy";
-import { pdfjs } from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 export default function App() {
   const sectionIds = ["home", "about", "career", "projects", "skills", "contact"];
