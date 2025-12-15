@@ -72,7 +72,7 @@ export default function Hero() {
               transition
             "
           >
-            경력 사항
+            💼 경력 사항
           </a>
           <a
             href="#projects"
@@ -83,10 +83,8 @@ export default function Hero() {
               transition
             "
           >
-            대표 프로젝트
+            🧩 대표 프로젝트
           </a>
-        </div>
-        <div className="mt-10 flex gap-4">
           <a
             href="#contact"
             className="
@@ -96,7 +94,7 @@ export default function Hero() {
               transition
             "
           >
-            함께 이야기하기
+            💬 함께 이야기하기
           </a>
         </div>
       </Reveal>
