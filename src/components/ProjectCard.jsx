@@ -10,7 +10,7 @@ export default function ProjectCard({
     <div
       onClick={onOpen}
       className="
-        p-5 rounded-lg border border-border
+        p-5 rounded-lg 
         bg-card dark:bg-[#1a1615]
         space-y-2
         cursor-pointer
