@@ -12,10 +12,10 @@ export default function Hero() {
         flex flex-col justify-center items-center text-center
         px-6
         py-24
-        bg-bg dark:bg-[#141212]
         text-main dark:text-[#f2f2f2]
         transition-colors duration-300
-      "
+        "
+        // bg-bg/90 dark:bg-[#141212]/90
     >
 
       {/* 🔥 Background Effect */}

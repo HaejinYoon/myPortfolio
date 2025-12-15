@@ -46,8 +46,8 @@ export default function ActivitiesAwards() {
       id="activities-awards"
       className="
         px-6 py-32
-        bg-bg text-main
-        dark:bg-[#141212] dark:text-[#f2f2f2]
+        text-main
+        dark:text-[#f2f2f2]
         transition-colors duration-300
       "
     >

@@ -64,7 +64,6 @@ export default function Projects() {
       id="projects"
       className="
         px-6 py-20
-        bg-bg dark:bg-[#141212]
         text-main dark:text-[#f2f2f2]
         transition-colors duration-300
       "

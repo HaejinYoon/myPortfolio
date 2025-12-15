@@ -10,6 +10,7 @@ import RightSideNav from "./components/RightSideNav";
 import DarkModeSwitch from "./components/DarkModeSwitch";
 import useScrollSpy from "./hooks/useScrollSpy";
 import useIsMobile from "./hooks/useIsMobile";
+import globalBg from "./assets/bg/global-bg.jpg";
 
 export default function App() {
   const sectionIds = [
@@ -24,6 +25,7 @@ export default function App() {
 
   const activeSection = useScrollSpy(sectionIds, 120);
   const isMobile = useIsMobile();
+  const scrollRef = useRef(null);
 
   // 🔥 절대 수정 금지: 제목 자동 변경
   useEffect(() => {
@@ -35,8 +37,6 @@ export default function App() {
 
     document.title = `${formatted} | Haejin's Portfolio`;
   }, [activeSection]);
-
-  const scrollRef = useRef(null);
 
   // 🔥 PC 전용 커스텀 스크롤
   useEffect(() => {
@@ -76,70 +76,78 @@ export default function App() {
 
     container.addEventListener("wheel", handleWheel, { passive: false });
     return () => container.removeEventListener("wheel", handleWheel);
-  }, [isMobile]);
+  }, [isMobile, sectionIds]);
 
   return (
-    <div
-      ref={scrollRef}
-      className="
-        h-screen overflow-y-scroll overflow-x-hidden
-        bg-bg dark:bg-[#141212]
-        text-main dark:text-[#f2f2f2]
-        transition-colors duration-300
-        scroll-smooth
-      "
-    >
-      <DarkModeSwitch />
-      <RightSideNav activeSection={activeSection} />
+    <div className="relative h-screen overflow-hidden">
+      {/* ✅ 전역 배경 이미지 */}
+      <div
+        className="fixed inset-0 bg-cover bg-center -z-10"
+        style={{ backgroundImage: `url(${globalBg})` }}
+      />
 
-      <section
-        id="home"
-        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
+      {/* ✅ 스크롤 컨테이너 (투명) */}
+      <div
+        ref={scrollRef}
+        className="
+          h-screen overflow-y-scroll overflow-x-hidden
+          text-main dark:text-[#f2f2f2]
+          transition-colors duration-300
+          scroll-smooth
+        "
       >
-        <Hero />
-      </section>
+        <DarkModeSwitch />
+        <RightSideNav activeSection={activeSection} />
 
-      <section
-        id="about"
-        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
-      >
-        <About />
-      </section>
+        <section
+          id="home"
+          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+        >
+          <Hero />
+        </section>
 
-      <section
-        id="skills"
-        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
-      >
-        <Skills />
-      </section>
+        <section
+          id="about"
+          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+        >
+          <About />
+        </section>
 
-      <section
-        id="career"
-        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
-      >
-        <Career />
-      </section>
+        <section
+          id="skills"
+          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+        >
+          <Skills />
+        </section>
+        
+        <section
+          id="career"
+          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+        >
+          <Career />
+        </section>
 
-      <section
-        id="projects"
-        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
-      >
-        <Projects />
-      </section>
+        <section
+          id="projects"
+          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+        >
+          <Projects />
+        </section>
 
-      <section
-        id="activities-awards"
-        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
-      >
-        <Activities />
-      </section>
+        <section
+          id="activities-awards"
+          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+        >
+          <Activities />
+        </section>
 
-      <section
-        id="contact"
-        className="min-h-screen md:h-screen items-center pb-20 md:pb-40"
-      >
-        <Contact />
-      </section>
+        <section
+          id="contact"
+          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-20 md:pb-40"
+        >
+          <Contact />
+        </section>
+      </div>
     </div>
   );
 }

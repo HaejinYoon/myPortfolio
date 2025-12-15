@@ -6,8 +6,8 @@ export default function About() {
     <section
       id="about"
       className="px-6 py-32
-                bg-bg text-main
-                dark:bg-[#141212] dark:text-[#e6e6e6]
+                 text-main
+                dark:text-[#e6e6e6]
                 transition-colors duration-300"
     >
 

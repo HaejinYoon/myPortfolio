@@ -15,7 +15,7 @@ export default function Career() {
   return (
     <section
       id="career"
-      className="px-6 py-20 bg-bg dark:bg-[#141212]"
+      className="px-6 py-20"
     >
       <div className="max-w-4xl mx-auto space-y-10">
         {/* Title */}

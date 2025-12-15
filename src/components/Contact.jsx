@@ -4,12 +4,11 @@ export default function Contact() {
   return (
     <section
       id="career"
-      className="px-6 py-20 bg-bg dark:bg-[#141212]"
+      className="px-6 py-20"
     >
     <div
       className="
         flex flex-col justify-center items-center text-center px-6
-        bg-bg dark:bg-[#141212]
         text-main dark:text-[#f2f2f2]
         transition-colors duration-300
       "
