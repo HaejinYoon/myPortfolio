@@ -39,7 +39,7 @@ export default function Career() {
           <h3 className="text-2xl font-semibold">
             스마티소프트
           </h3>
-          <p className="text-sm text-text-sub">
+          <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
             2022.03 ~ 2024.08 · 웹 프론트엔드 개발자 / UI·UX 파트장
           </p>
         </div>

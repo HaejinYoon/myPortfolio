@@ -94,11 +94,11 @@ export default function ActivitiesAwards() {
                       className="h-5 object-contain"
                     />
                   </p>
-                  <p className="text-sm text-text-sub">
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
                     LS 미래원 <br />
                     2025.07. ~ 2025.11. (4개월)
                   </p>
-                  <ul className="text-sm text-text-sub space-y-1">
+                  <ul className="text-sm  text-text-sub dark:text-[#bbbbbb]">
                     <li>• Python 기반 빅데이터 분석</li>
                     <li>• 전기 / 전자 / 제조 도메인 지식을 반영한 데이터 분석 프로젝트 수행</li>
                     <li>• LS 그룹 현직자 특강 및 멘토링 참여</li>
@@ -127,11 +127,11 @@ export default function ActivitiesAwards() {
                   <p className="font-semibold group-hover:text-primary transition-colors">
                     디지털 데이터 융합 JAVA 응용 SW 개발자 전문과정
                   </p>
-                  <p className="text-sm text-text-sub">
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
                     중앙정보처리학원 <br />
                     2021.09. ~ 2022.01. (5개월)
                   </p>
-                  <ul className="text-sm text-text-sub space-y-1">
+                  <ul className="text-sm text-text-sub dark:text-[#bbbbbb]">
                     <li>• 국비지원 SW 개발 교육 과정</li>
                     <li>• 교육 마무리 프로젝트 1등 수상</li>
                     <li>
@@ -181,11 +181,11 @@ export default function ActivitiesAwards() {
                   <p className="font-semibold group-hover:text-primary transition-colors">
                     해외 자매대학 연계 어학연수 (영어)
                   </p>
-                  <p className="text-sm text-text-sub">
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
                     California State University of Sacramento <br />
                     2015.01. ~ 2016.01. (1년)
                   </p>
-                  <ul className="text-sm text-text-sub space-y-1">
+                  <ul className="text-sm text-text-sub dark:text-[#bbbbbb]">
                     <li>• 어학당 최고 레벨(Level 8) 달성</li>
                     <li>• 본 대학교 전공 관련 정규 수업 참여</li>
                   </ul>
@@ -220,12 +220,12 @@ export default function ActivitiesAwards() {
                     제7회 대구 빅데이터 분석 경진대회
                     <span className="text-primary ml-2">(DACON)</span>
                   </p>
-                  <p className="text-sm text-text-sub">
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
                     데이터 분석 및 활용 분야 · 공공 부문 <br />
                     2025.08. ~ 2025.10. (3개월)
                   </p>
                   <p className="font-semibold text-primary">🏆 특별상 수상</p>
-                  <ul className="text-sm text-text-sub space-y-1">
+                  <ul className="text-sm text-text-sub dark:text-[#bbbbbb]">
                     <li>• 분석 주제: 대구광역시 시니어 금융 서비스 전략 및 입지 제안</li>
                     <li>
                       • 결과 보고서:&nbsp;

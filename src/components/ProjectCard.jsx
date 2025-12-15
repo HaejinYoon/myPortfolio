@@ -35,11 +35,11 @@ export default function ProjectCard({
       </p>
 
       {/* 3행 */}
-      <p className="text-sm text-text-sub leading-relaxed">
+      <p className="text-sm text-text-sub dark:text-[#bbbbbb] leading-relaxed">
         {description}
       </p>
 
-      <p className="text-xs text-text-sub pt-2">
+      <p className="text-xs text-text-sub dark:text-[#bbbbbb] pt-2">
         <span className="font-medium">Tech.</span> {tech}
       </p>
     </div>
