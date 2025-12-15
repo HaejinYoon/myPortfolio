@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function RightSideNav({ activeSection }) {
   const sections = [
@@ -12,6 +13,7 @@ export default function RightSideNav({ activeSection }) {
 
   const [visible, setVisible] = useState(true);
   const hideTimer = useRef(null);
+  const isMobile = useIsMobile();
 
   // 자동 숨김
   const startHideTimer = () => {
@@ -31,14 +33,14 @@ export default function RightSideNav({ activeSection }) {
       {/* 🔥 UI 힌트: '||' 핸들 */}
       <div
         className={`
-          fixed top-1/2 right-3.5 -translate-y-1/2 z-40
+          fixed top-1/2 -translate-y-1/2 z-40
           px-1 py-3
           bg-primary text-white
           rounded-l-full
           text-sm font-bold
           flex items-center justify-center
           cursor-pointer transition-all duration-300
-
+          ${isMobile ? "right-0" : "right-3.5"}
           ${visible 
             ? "opacity-0 pointer-events-none translate-x-3"  // 네비가 나타나면 완전 제거
             : "opacity-80 hover:opacity-100"}                 // 네비가 숨겨지면 표시
