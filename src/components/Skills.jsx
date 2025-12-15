@@ -116,9 +116,15 @@ export default function Skills() {
       "
     >
       <Reveal>
-        <h2 className="text-4xl font-bold mb-12 text-primary dark:text-primary-light">
+          <div className="flex items-center gap-3">
+            <span className="text-primary dark:text-primary-light text-3xl font-semibold tracking-wide">
+              02.
+            </span>
+            <h2 className="text-3xl font-bold text-primary dark:text-primary-light">
           Skills
         </h2>
+          </div>
+          <div className="h-[1px] bg-border dark:bg-[#1f2d3a] mt-3" />
       </Reveal>
 
       <div className="flex w-full max-w-5xl gap-10">

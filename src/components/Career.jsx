@@ -17,13 +17,22 @@ export default function Career() {
       id="career"
       className="px-6 py-20 bg-bg dark:bg-[#141212]"
     >
-      <Reveal>
-        <h2 className="text-3xl font-bold text-center mb-12 text-primary">
-          Career
-        </h2>
-      </Reveal>
-
       <div className="max-w-4xl mx-auto space-y-10">
+        {/* Title */}
+        <Reveal>
+          <div className="flex items-center gap-3">
+            <span className="text-primary dark:text-primary-light text-3xl font-semibold tracking-wide">
+              03.
+            </span>
+
+            <h2 className="text-3xl font-bold text-primary dark:text-primary-light">
+              Career
+            </h2>
+          </div>
+
+          {/* 구분선 */}
+          <div className="h-[1px] bg-border dark:bg-[#1f2d3a] mt-3 mb-4" />
+        </Reveal>
 
         {/* 회사 정보 */}
         <div className="text-center space-y-2">

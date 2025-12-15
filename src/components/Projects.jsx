@@ -69,14 +69,22 @@ export default function Projects() {
         transition-colors duration-300
       "
     >
-      <Reveal>
-        <h2 className="text-3xl font-bold text-center mb-12 text-primary dark:text-primary-light">
-          Projects
-        </h2>
-      </Reveal>
-
       <div className="max-w-4xl mx-auto space-y-4">
+        {/* Title */}
+        <Reveal>
+          <div className="flex items-center gap-3">
+            <span className="text-primary dark:text-primary-light text-3xl font-semibold tracking-wide">
+              04.
+            </span>
 
+            <h2 className="text-3xl font-bold text-primary dark:text-primary-light">
+              Projects
+            </h2>
+          </div>
+
+          {/* 구분선 */}
+          <div className="h-[1px] bg-border dark:bg-[#1f2d3a] mt-3 mb-4" />
+        </Reveal>
         {/* ===============================
             LS 빅데이터스쿨 5기
         ================================ */}
