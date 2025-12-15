@@ -108,73 +108,86 @@ export default function Skills() {
   const [activeTab, setActiveTab] = useState("Frontend");
 
   return (
-    <div
+    <section
+      id="skills"
       className="
-        flex flex-col justify-center items-center px-6 py-20
-        bg-bg dark:bg-[#141212] 
-        text-main dark:text-[#f2f2f2]
+        px-6 py-32
+        bg-bg text-main
+        dark:bg-[#141212] dark:text-[#f2f2f2]
+        transition-colors duration-300
       "
     >
-      <Reveal>
+      {/* ⭐ 기준 컨테이너 (가로폭 고정) */}
+      <div className="w-full max-w-4xl mx-auto space-y-10">
+
+        {/* Title */}
+        <Reveal>
           <div className="flex items-center gap-3">
             <span className="text-primary dark:text-primary-light text-3xl font-semibold tracking-wide">
               02.
             </span>
             <h2 className="text-3xl font-bold text-primary dark:text-primary-light">
-          Skills
-        </h2>
+              Skills
+            </h2>
           </div>
           <div className="h-[1px] bg-border dark:bg-[#1f2d3a] mt-3" />
-      </Reveal>
+        </Reveal>
 
-      <div className="flex w-full max-w-5xl gap-10">
-        {/* Left Side Tabs */}
-        <div className="w-40 flex flex-col gap-4">
-          {tabs.map((t) => (
-            <button
-              key={t}
-              onClick={() => setActiveTab(t)}
-              className={`text-left px-4 py-2 rounded-lg transition-all
-                ${
-                  activeTab === t
-                    ? "text-primary border-l-4 border-primary font-semibold"
-                    : "text-text-sub hover:text-primary"
-                }
-              `}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
+        {/* Content */}
+        <div className="flex w-full gap-10">
 
-        {/* Right Side Content */}
-        <div className="flex-1 flex flex-col gap-8">
-          {content[activeTab].map((item, idx) => (
-            <Reveal delay={idx * 80} key={item.name}>
-              <div
-                className="
-                  bg-card dark:bg-[#1f1b1a]
-                  p-6 rounded-xl shadow
-                  border border-border dark:border-[#3a3332]
-                "
+          {/* Tabs */}
+          <div className="w-40 shrink-0 flex flex-col gap-4">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`text-left px-4 py-2 transition-all
+                  ${
+                    activeTab === tab
+                      ? "text-primary border-l-4 border-primary font-semibold"
+                      : "text-text-sub hover:text-primary"
+                  }
+                `}
               >
-                <div className="flex items-center gap-4 mb-3">
-                  <img src={item.icon} className="w-10 h-10 object-contain" />
-                  <h3 className="text-lg font-semibold text-primary">
-                    {item.name}
-                  </h3>
-                </div>
+                {tab}
+              </button>
+            ))}
+          </div>
 
-                <ul className="text-left text-sm text-text-sub dark:text-[#cfcfcf] flex flex-col gap-1">
-                  {item.desc.map((d, i) => (
-                    <li key={i}>• {d}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
+          {/* Cards */}
+          <div className="flex-1 min-w-0 flex flex-col gap-8">
+            {content[activeTab].map((item, idx) => (
+              <Reveal key={item.name} delay={idx * 80}>
+                <div
+                  className="
+                    bg-card dark:bg-[#1f1b1a]
+                    p-6 rounded-xl shadow
+                    border border-border dark:border-[#3a3332]
+                  "
+                >
+                  <div className="flex items-center gap-4 mb-3">
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="w-10 h-10 object-contain"
+                    />
+                    <h3 className="text-lg font-semibold text-primary">
+                      {item.name}
+                    </h3>
+                  </div>
+
+                  <ul className="text-sm text-text-sub dark:text-[#cfcfcf] space-y-1">
+                    {item.desc.map((d, i) => (
+                      <li key={i}>• {d}</li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
