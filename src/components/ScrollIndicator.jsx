@@ -6,7 +6,8 @@ export default function ScrollIndicator() {
       className="
         absolute bottom-10 left-1/2 -translate-x-1/2
         flex flex-col items-center gap-3
-        text-sm text-text-sub
+        text-xs tracking-widest uppercase
+        text-text-sub dark:text-gray-300
         select-none
       "
       initial={{ opacity: 0, y: 10 }}
@@ -14,20 +15,20 @@ export default function ScrollIndicator() {
       transition={{ delay: 1.2, duration: 0.8 }}
     >
       {/* 텍스트 */}
-      <span className="tracking-widest uppercase text-xs">
-        Scroll
-      </span>
+      <span>Scroll</span>
 
       {/* 마우스 바디 */}
       <div
         className="
           relative w-6 h-10
           rounded-full
-          border-2 border-primary
+          border-2
+          border-primary dark:border-primary-light
           flex justify-center
         "
         style={{
-          boxShadow: "0 0 12px rgba(177, 35, 35, 0.4)",
+          boxShadow:
+            "0 0 10px rgba(177, 35, 35, 0.35), inset 0 0 6px rgba(177, 35, 35, 0.15)",
         }}
       >
         {/* 내부 스크롤 점 */}
@@ -35,9 +36,13 @@ export default function ScrollIndicator() {
           className="
             absolute top-2
             w-1.5 h-1.5
-            rounded-full bg-primary
+            rounded-full
+            bg-primary dark:bg-primary-light
           "
-          animate={{ y: [0, 12, 0], opacity: [1, 0.6, 1] }}
+          animate={{
+            y: [0, 12, 0],
+            opacity: [1, 0.6, 1],
+          }}
           transition={{
             duration: 1.5,
             repeat: Infinity,

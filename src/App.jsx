@@ -9,13 +9,23 @@ import Contact from "./components/Contact";
 import RightSideNav from "./components/RightSideNav";
 import DarkModeSwitch from "./components/DarkModeSwitch";
 import useScrollSpy from "./hooks/useScrollSpy";
-
+import useIsMobile from "./hooks/useIsMobile";
 
 export default function App() {
-  const sectionIds = ["home", "about", "career", "projects", "skills", "activities-awards", "contact"];
-  const activeSection = useScrollSpy(sectionIds, 120);
+  const sectionIds = [
+    "home",
+    "about",
+    "career",
+    "projects",
+    "skills",
+    "activities-awards",
+    "contact",
+  ];
 
-  // 🔥 절대 수정하지 말아야 하는 제목 자동 변경
+  const activeSection = useScrollSpy(sectionIds, 120);
+  const isMobile = useIsMobile();
+
+  // 🔥 절대 수정 금지: 제목 자동 변경
   useEffect(() => {
     if (!activeSection) return;
 
@@ -26,16 +36,17 @@ export default function App() {
     document.title = `${formatted} | Haejin's Portfolio`;
   }, [activeSection]);
 
-  // 🔥 커스텀 섹션 스크롤 구현
   const scrollRef = useRef(null);
 
+  // 🔥 PC 전용 커스텀 스크롤
   useEffect(() => {
+    if (isMobile) return;
+
     const container = scrollRef.current;
     if (!container) return;
 
     let isScrolling = false;
     const height = window.innerHeight;
-    const sections = sectionIds;
 
     const handleWheel = (e) => {
       e.preventDefault();
@@ -43,33 +54,29 @@ export default function App() {
 
       const delta = e.deltaY;
       const current = container.scrollTop;
-
       const index = Math.round(current / height);
+
       let nextIndex = index;
-
-      if (delta > 0) nextIndex = Math.min(index + 1, sections.length - 1);
-      else nextIndex = Math.max(index - 1, 0);
-
-      const target = nextIndex * height;
+      if (delta > 0) {
+        nextIndex = Math.min(index + 1, sectionIds.length - 1);
+      } else {
+        nextIndex = Math.max(index - 1, 0);
+      }
 
       isScrolling = true;
       container.scrollTo({
-        top: target,
+        top: nextIndex * height,
         behavior: "smooth",
       });
 
-      // 느린 스크롤 속도 조절 (700ms → 천천히 이동)
       setTimeout(() => {
         isScrolling = false;
       }, 700);
     };
 
     container.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      container.removeEventListener("wheel", handleWheel);
-    };
-  }, []);
+    return () => container.removeEventListener("wheel", handleWheel);
+  }, [isMobile]);
 
   return (
     <div
@@ -85,38 +92,52 @@ export default function App() {
       <DarkModeSwitch />
       <RightSideNav activeSection={activeSection} />
 
-      {/* Hero Section */}
-      <section id="home" className="h-screen items-center pb-52">
+      <section
+        id="home"
+        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
+      >
         <Hero />
       </section>
 
-      {/* About Section */}
-      <section id="about" className="h-screen items-center pb-52">
+      <section
+        id="about"
+        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
+      >
         <About />
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="h-screen items-center pb-52">
+      <section
+        id="skills"
+        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
+      >
         <Skills />
       </section>
 
-      {/* Career Section */}
-      <section id="career" className="h-screen items-center pb-52">
+      <section
+        id="career"
+        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
+      >
         <Career />
       </section>
-      
-      {/* Projects Section */}
-      <section id="projects" className="h-screen items-center pb-52">
+
+      <section
+        id="projects"
+        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
+      >
         <Projects />
       </section>
 
-      {/* activities-awards Section */}
-      <section id="activities-awards" className="h-screen items-center pb-52">
+      <section
+        id="activities-awards"
+        className="min-h-screen md:h-screen items-center pb-24 md:pb-52"
+      >
         <Activities />
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="h-screen items-center pb-40">
+      <section
+        id="contact"
+        className="min-h-screen md:h-screen items-center pb-20 md:pb-40"
+      >
         <Contact />
       </section>
     </div>
