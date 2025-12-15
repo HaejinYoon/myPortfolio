@@ -6,6 +6,7 @@ export default function RightSideNav({ activeSection }) {
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
+    { id: "activities-awards", label: "Act&Awards" },
     { id: "contact", label: "Contact" },
   ];
 

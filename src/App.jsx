@@ -4,6 +4,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Career from "./components/Career";
 import Projects from "./components/Projects";
+import Activities from "./components/ActivitiesAwards";
 import Contact from "./components/Contact";
 import RightSideNav from "./components/RightSideNav";
 import DarkModeSwitch from "./components/DarkModeSwitch";
@@ -11,7 +12,7 @@ import useScrollSpy from "./hooks/useScrollSpy";
 
 
 export default function App() {
-  const sectionIds = ["home", "about", "career", "projects", "skills", "contact"];
+  const sectionIds = ["home", "about", "career", "projects", "skills", "activities-awards", "contact"];
   const activeSection = useScrollSpy(sectionIds, 120);
 
   // 🔥 절대 수정하지 말아야 하는 제목 자동 변경
@@ -107,6 +108,11 @@ export default function App() {
       {/* Projects Section */}
       <section id="projects" className="h-screen items-center pt-40 pb-52">
         <Projects />
+      </section>
+
+      {/* activities-awards Section */}
+      <section id="activities-awards" className="h-screen items-center pb-52">
+        <Activities />
       </section>
 
       {/* Contact Section */}
