@@ -86,27 +86,27 @@ export default function App() {
       <RightSideNav activeSection={activeSection} />
 
       {/* Hero Section */}
-      <section id="home" className="h-screen items-center pt-40 pb-52">
+      <section id="home" className="h-screen items-center pb-52">
         <Hero />
       </section>
 
       {/* About Section */}
-      <section id="about" className="h-screen items-center pt-40 pb-52">
+      <section id="about" className="h-screen items-center pb-52">
         <About />
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="h-screen items-center pt-40 pb-52">
+      <section id="skills" className="h-screen items-center pb-52">
         <Skills />
       </section>
 
       {/* Career Section */}
-      <section id="Career" className="h-screen items-center pt-40 pb-52">
+      <section id="career" className="h-screen items-center pb-52">
         <Career />
       </section>
       
       {/* Projects Section */}
-      <section id="projects" className="h-screen items-center pt-40 pb-52">
+      <section id="projects" className="h-screen items-center pb-52">
         <Projects />
       </section>
 
@@ -116,7 +116,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="h-screen items-center pt-40 pb-40">
+      <section id="contact" className="h-screen items-center pb-40">
         <Contact />
       </section>
     </div>
