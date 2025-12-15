@@ -60,7 +60,7 @@ export default function ActivitiesAwards() {
               05.
             </span>
             <h2 className="text-3xl font-bold text-primary dark:text-primary-light">
-              주요 활동 및 수상 경력
+              Activities & Awards
             </h2>
           </div>
           <div className="h-[1px] bg-border dark:bg-[#1f2d3a] mt-3" />

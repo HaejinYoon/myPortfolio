@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 export default function RightSideNav({ activeSection }) {
   const sections = [
     { id: "home", label: "Home" },
-    { id: "about", label: "About" },
+    { id: "about", label: "About Me" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "activities-awards", label: "Act&Awards" },
