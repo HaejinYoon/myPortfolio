@@ -148,7 +148,7 @@ export default function ActivitiesAwards() {
                     <li>
                       • 발표 자료:&nbsp;
                       <a
-                        href="https://drive.google.com/file/d/1XmmnAVuprD7BeXnJmagfIami8IgMb31/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1XmmnAVuprD7BeXnJmagfj1ami8lgMb31/view?usp=sharing"
                         target="_blank"
                         rel="noreferrer"
                         className="text-primary underline"
