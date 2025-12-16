@@ -66,16 +66,36 @@ export default function App() {
       const currentIndex = getCurrentIndex();
 
       /* ======================
-        ↑ 위로 스크롤 (즉시 스냅)
+        ↓ 아래로 스크롤만 제어
         ====================== */
-      if (delta < 0) {
+      if (delta > 0) {
+        const current = sections[currentIndex];
+        if (!current) return;
+
+        const sectionBottom =
+          current.offsetTop + current.offsetHeight;
+        const viewBottom =
+          container.scrollTop + window.innerHeight;
+
+        const canScrollDownInside =
+          sectionBottom > viewBottom + 8;
+
+        // 섹션 내부 스크롤 가능 → 자연 스크롤
+        if (canScrollDownInside) {
+          return;
+        }
+
+        // 내부 끝 → 다음 섹션
         e.preventDefault();
 
-        const prevIndex = Math.max(currentIndex - 1, 0);
-        if (prevIndex === currentIndex) return;
+        const nextIndex = Math.min(
+          currentIndex + 1,
+          sections.length - 1
+        );
+        if (nextIndex === currentIndex) return;
 
         isSnapping = true;
-        sections[prevIndex].scrollIntoView({
+        sections[nextIndex].scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
@@ -83,47 +103,9 @@ export default function App() {
         setTimeout(() => {
           isSnapping = false;
         }, 650);
-
-        return;
       }
 
-      /* ======================
-        ↓ 아래로 스크롤 (자연)
-        ====================== */
-      const current = sections[currentIndex];
-      if (!current) return;
-
-      const sectionBottom =
-        current.offsetTop + current.offsetHeight;
-      const viewBottom =
-        container.scrollTop + window.innerHeight;
-
-      const canScrollDownInside =
-        sectionBottom > viewBottom + 8;
-
-      if (canScrollDownInside) {
-        // 자연 스크롤 허용
-        return;
-      }
-
-      // 내부 끝 → 다음 섹션
-      e.preventDefault();
-
-      const nextIndex = Math.min(
-        currentIndex + 1,
-        sections.length - 1
-      );
-      if (nextIndex === currentIndex) return;
-
-      isSnapping = true;
-      sections[nextIndex].scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-
-      setTimeout(() => {
-        isSnapping = false;
-      }, 650);
+      // ↑ 위로 스크롤은 아무것도 하지 않음 (기본 스크롤)
     };
 
     container.addEventListener("wheel", handleWheel, { passive: false });
