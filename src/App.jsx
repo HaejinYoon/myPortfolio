@@ -27,7 +27,7 @@ export default function App() {
   const isMobile = useIsMobile();
   const scrollRef = useRef(null);
 
-  // 🔥 절대 수정 금지: 제목 자동 변경
+  /* 🔥 절대 수정 금지: 탭 타이틀 자동 변경 */
   useEffect(() => {
     if (!activeSection) return;
 
@@ -38,55 +38,109 @@ export default function App() {
     document.title = `${formatted} | Haejin's Portfolio`;
   }, [activeSection]);
 
-  // 🔥 PC 전용 커스텀 스크롤
+  /* 🔥 PC 전용 섹션 스냅 스크롤 (침범 없는 방식) */
   useEffect(() => {
     if (isMobile) return;
 
     const container = scrollRef.current;
     if (!container) return;
 
-    let isScrolling = false;
-    const height = window.innerHeight;
+    let isSnapping = false;
+
+    const sections = Array.from(container.querySelectorAll("section"));
+
+    const getCurrentIndex = () => {
+      const pos = container.scrollTop + window.innerHeight * 0.3;
+      let idx = 0;
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop <= pos) idx = i;
+        else break;
+      }
+      return idx;
+    };
 
     const handleWheel = (e) => {
-      e.preventDefault();
-      if (isScrolling) return;
+      if (isSnapping) return;
 
       const delta = e.deltaY;
-      const current = container.scrollTop;
-      const index = Math.round(current / height);
+      const currentIndex = getCurrentIndex();
 
-      let nextIndex = index;
-      if (delta > 0) {
-        nextIndex = Math.min(index + 1, sectionIds.length - 1);
-      } else {
-        nextIndex = Math.max(index - 1, 0);
+      /* ======================
+        ↑ 위로 스크롤 (즉시 스냅)
+        ====================== */
+      if (delta < 0) {
+        e.preventDefault();
+
+        const prevIndex = Math.max(currentIndex - 1, 0);
+        if (prevIndex === currentIndex) return;
+
+        isSnapping = true;
+        sections[prevIndex].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        setTimeout(() => {
+          isSnapping = false;
+        }, 650);
+
+        return;
       }
 
-      isScrolling = true;
-      container.scrollTo({
-        top: nextIndex * height,
+      /* ======================
+        ↓ 아래로 스크롤 (자연)
+        ====================== */
+      const current = sections[currentIndex];
+      if (!current) return;
+
+      const sectionBottom =
+        current.offsetTop + current.offsetHeight;
+      const viewBottom =
+        container.scrollTop + window.innerHeight;
+
+      const canScrollDownInside =
+        sectionBottom > viewBottom + 8;
+
+      if (canScrollDownInside) {
+        // 자연 스크롤 허용
+        return;
+      }
+
+      // 내부 끝 → 다음 섹션
+      e.preventDefault();
+
+      const nextIndex = Math.min(
+        currentIndex + 1,
+        sections.length - 1
+      );
+      if (nextIndex === currentIndex) return;
+
+      isSnapping = true;
+      sections[nextIndex].scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
 
       setTimeout(() => {
-        isScrolling = false;
-      }, 700);
+        isSnapping = false;
+      }, 650);
     };
 
     container.addEventListener("wheel", handleWheel, { passive: false });
-    return () => container.removeEventListener("wheel", handleWheel);
-  }, [isMobile, sectionIds]);
+    return () =>
+      container.removeEventListener("wheel", handleWheel);
+  }, [isMobile]);
+
 
   return (
     <div className="relative h-screen overflow-hidden">
-      {/* ✅ 전역 배경 이미지 */}
+      {/* ✅ 전역 배경 */}
       <div
         className="fixed inset-0 bg-cover bg-center -z-10"
         style={{ backgroundImage: `url(${globalBg})` }}
       />
 
-      {/* ✅ 스크롤 컨테이너 (투명) */}
+      {/* ✅ 스크롤 컨테이너 */}
       <div
         ref={scrollRef}
         className="
@@ -99,51 +153,53 @@ export default function App() {
         <DarkModeSwitch />
         <RightSideNav activeSection={activeSection} />
 
+        {/* Hero만 화면 고정 */}
         <section
           id="home"
-          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+          className="h-screen bg-bg/90 dark:bg-[#141212]/90"
         >
           <Hero />
         </section>
 
+        {/* 이하 전부 콘텐츠 기준 */}
         <section
           id="about"
-          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+          className="min-h-screen bg-bg/90 dark:bg-[#141212]/90 py-24"
         >
           <About />
         </section>
 
         <section
           id="skills"
-          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+          className="min-h-screen bg-bg/90 dark:bg-[#141212]/90 py-24"
         >
           <Skills />
         </section>
-        
+
         <section
           id="career"
-          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+          className="min-h-screen bg-bg/90 dark:bg-[#141212]/90 py-24"
         >
           <Career />
         </section>
 
         <section
           id="projects"
-          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+          className="min-h-screen bg-bg/90 dark:bg-[#141212]/90 py-24"
         >
           <Projects />
         </section>
 
         <section
           id="activities-awards"
-          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-24 md:pb-52"
+          className="min-h-screen bg-bg/90 dark:bg-[#141212]/90 py-24"
         >
           <Activities />
         </section>
 
         <section
           id="contact"
-          className="min-h-screen md:h-screen bg-bg/90 dark:bg-[#141212]/90 pb-20 md:pb-40"
+          className="min-h-screen bg-bg/90 dark:bg-[#141212]/90 py-32"
         >
           <Contact />
         </section>
