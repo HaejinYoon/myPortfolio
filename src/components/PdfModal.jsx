@@ -4,7 +4,6 @@ import { Document, Page, pdfjs } from "react-pdf";
 /* ✅ ESM worker를 public에서 직접 로드 */
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
-
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
@@ -23,6 +22,10 @@ export default function PdfModal({
   const wheelLock = useRef(false);
   const hideTimer = useRef(null);
   const hoveringControls = useRef(false);
+
+  /* 🔹 추가: 모바일 터치 */
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
   const totalSlides = endPage - startPage + 1;
   const currentIndex = currentPage - startPage + 1;
@@ -99,16 +102,13 @@ export default function PdfModal({
     return () => window.removeEventListener("keydown", onKey);
   }, [open, currentPage, startPage, endPage, onClose]);
 
+  /* 마우스 이동 시 컨트롤 표시 */
   useEffect(() => {
     if (!open) return;
-
     let rafId = null;
 
     const onMouseMove = () => {
-      // 이미 보이고 있으면 아무것도 안 함
       if (showControls) return;
-
-      // 연속 mousemove 방지 (성능 + 안정성)
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         setShowControls(true);
@@ -122,6 +122,30 @@ export default function PdfModal({
     };
   }, [open, showControls]);
 
+  /* 🔹 추가: 모바일 스와이프 로직 */
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current == null || touchEndX.current == null) return;
+
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 60;
+
+    if (diff > threshold && currentPage < endPage) {
+      setCurrentPage((p) => p + 1);
+    } else if (diff < -threshold && currentPage > startPage) {
+      setCurrentPage((p) => p - 1);
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   if (!open) return null;
 
@@ -136,9 +160,13 @@ export default function PdfModal({
         onClick={(e) => e.stopPropagation()}
         onMouseEnter={() => {
           setShowControls(true);
-          startHideTimer(); // 🔥 모달 위에서도 타이머 허용
+          startHideTimer();
         }}
         onMouseLeave={startHideTimer}
+        /* 🔹 추가: 터치 이벤트 바인딩 */
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         className="
           relative
           rounded-2xl
