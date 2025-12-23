@@ -60,7 +60,7 @@ export default function ActivitiesAwards() {
               05.
             </span>
             <h2 className="text-3xl font-bold text-primary dark:text-primary-light">
-              Activities & Awards
+              Activities & Awards & Certifications
             </h2>
           </div>
           <div className="h-[1px] bg-border dark:bg-[#1f2d3a] mt-3" />
@@ -272,7 +272,123 @@ export default function ActivitiesAwards() {
               </div>
             </div>
           </div>
-        </Reveal>
+          </Reveal>
+          {/* ================= 자격증 ================= */}
+          <Reveal>
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-primary">자격증</h3>
+
+              <div className="space-y-6">
+                {/* 정보처리기사 */}
+                <div
+                  className="
+                    group
+                    bg-card dark:bg-[#1f1b1a]
+                    p-6 rounded-xl
+                    border border-border dark:border-[#3a3332]
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    hover:shadow-lg dark:hover:shadow-black/40
+                    hover:border-primary
+                  "
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <p className="font-semibold text-main dark:text-[#f2f2f2] group-hover:text-primary transition-colors">
+                      정보처리기사
+                    </p>
+                    <span
+                      className="
+                        text-xs px-2 py-1 rounded-full
+                        bg-primary/10 text-primary
+                        font-medium
+                      "
+                    >
+                      취득
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
+                    한국산업인력공단
+                  </p>
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
+                    2017.05.26.
+                  </p>
+                </div>
+
+                {/* Data Analysis Technology Assessment */}
+                <div
+                  className="
+                    group
+                    bg-card dark:bg-[#1f1b1a]
+                    p-6 rounded-xl
+                    border border-border dark:border-[#3a3332]
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    hover:shadow-lg dark:hover:shadow-black/40
+                    hover:border-primary
+                  "
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <p className="font-semibold text-main dark:text-[#f2f2f2] group-hover:text-primary transition-colors">
+                      Data Analysis Technology Assessment 1급 (Python)
+                    </p>
+                    <span
+                      className="
+                        text-xs px-2 py-1 rounded-full
+                        bg-primary/10 text-primary
+                        font-medium
+                      "
+                    >
+                      취득
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
+                    YBM
+                  </p>
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
+                    2025.09
+                  </p>
+                </div>
+
+                {/* 빅데이터분석기사 필기 */}
+                <div
+                  className="
+                    group
+                    bg-card dark:bg-[#1f1b1a]
+                    p-6 rounded-xl
+                    border border-border dark:border-[#3a3332]
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    hover:shadow-lg dark:hover:shadow-black/40
+                    hover:border-primary
+                  "
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <p className="font-semibold text-main dark:text-[#f2f2f2] group-hover:text-primary transition-colors">
+                      빅데이터분석기사 필기
+                    </p>
+                    <span
+                      className="
+                        text-xs px-2 py-1 rounded-full
+                        bg-secondary/10 text-secondary
+                        font-medium
+                      "
+                    >
+                      필기 합격
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
+                    한국데이터산업진흥원
+                  </p>
+                  <p className="text-sm text-text-sub dark:text-[#bbbbbb]">
+                    2025.09.26.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
 
       </div>
     </section>
